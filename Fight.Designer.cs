@@ -44,6 +44,10 @@ namespace InvincibleGame
             FightHealthEnemy = new Label();
             HeroName = new Label();
             EnemyName = new Label();
+            ButtonSkill1 = new Button();
+            EnemyAbilityUseText = new Label();
+            ButtonSkill2 = new Button();
+            RunAwayButton = new Button();
             ((System.ComponentModel.ISupportInitialize)fightImgInvincible).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fightImgAngstrom).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fightImgConquest).BeginInit();
@@ -175,11 +179,55 @@ namespace InvincibleGame
             EnemyName.TabIndex = 13;
             EnemyName.Text = "label1";
             // 
+            // ButtonSkill1
+            // 
+            ButtonSkill1.Location = new Point(70, 409);
+            ButtonSkill1.Name = "ButtonSkill1";
+            ButtonSkill1.Size = new Size(75, 23);
+            ButtonSkill1.TabIndex = 14;
+            ButtonSkill1.Text = "Punch";
+            ButtonSkill1.UseVisualStyleBackColor = true;
+            ButtonSkill1.Click += ButtonSkill1_Click;
+            // 
+            // EnemyAbilityUseText
+            // 
+            EnemyAbilityUseText.AutoSize = true;
+            EnemyAbilityUseText.Location = new Point(350, 86);
+            EnemyAbilityUseText.Name = "EnemyAbilityUseText";
+            EnemyAbilityUseText.Size = new Size(38, 15);
+            EnemyAbilityUseText.TabIndex = 15;
+            EnemyAbilityUseText.Text = "label1";
+            EnemyAbilityUseText.Visible = false;
+            // 
+            // ButtonSkill2
+            // 
+            ButtonSkill2.Location = new Point(183, 409);
+            ButtonSkill2.Name = "ButtonSkill2";
+            ButtonSkill2.Size = new Size(75, 23);
+            ButtonSkill2.TabIndex = 16;
+            ButtonSkill2.Text = "Kick";
+            ButtonSkill2.UseVisualStyleBackColor = true;
+            ButtonSkill2.Click += ButtonSkill2_Click;
+            // 
+            // RunAwayButton
+            // 
+            RunAwayButton.Location = new Point(750, 461);
+            RunAwayButton.Name = "RunAwayButton";
+            RunAwayButton.Size = new Size(75, 23);
+            RunAwayButton.TabIndex = 17;
+            RunAwayButton.Text = "Run Away";
+            RunAwayButton.UseVisualStyleBackColor = true;
+            RunAwayButton.Click += this.RunAwayButton_Click;
+            // 
             // Fight
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(915, 496);
+            ClientSize = new Size(868, 496);
+            Controls.Add(RunAwayButton);
+            Controls.Add(ButtonSkill2);
+            Controls.Add(EnemyAbilityUseText);
+            Controls.Add(ButtonSkill1);
             Controls.Add(EnemyName);
             Controls.Add(HeroName);
             Controls.Add(fightImgInvincible);
@@ -217,5 +265,9 @@ namespace InvincibleGame
         private Label FightHealthEnemy;
         private Label HeroName;
         private Label EnemyName;
+        private Button ButtonSkill1;
+        private Label EnemyAbilityUseText;
+        private Button ButtonSkill2;
+        private Button RunAwayButton;
     }
 }
