@@ -10,9 +10,18 @@ namespace InvincibleGame
     {
         public string Name { get; set; }
         public int Health { get; set; }
-        public Character()
+        public int AttackDamage { get; set; }
+        public int Armor { get; set; }
+        public int AbilityPower { get; set; }
+        public int MagicResistance { get; set; }
+        public int Speed { get; set; }
+        public Character(string name, int health, int attackDamage, int armor, int abilityPower)
         {
-            Health = 100;
+            Name = name;
+            Health = health;
+            AttackDamage = attackDamage;
+            Armor = armor;
+            AbilityPower = abilityPower;
         }
     }
 }

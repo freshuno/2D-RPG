@@ -34,8 +34,10 @@
             label1 = new Label();
             label2 = new Label();
             healthLabel = new Label();
+            conquest = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)invincible).BeginInit();
             ((System.ComponentModel.ISupportInitialize)angstrom).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)conquest).BeginInit();
             SuspendLayout();
             // 
             // invincible
@@ -85,21 +87,33 @@
             healthLabel.TabIndex = 4;
             healthLabel.Text = "label3";
             // 
-            // Form1
+            // conquest
+            // 
+            conquest.Image = (Image)resources.GetObject("conquest.Image");
+            conquest.Location = new Point(589, 396);
+            conquest.Name = "conquest";
+            conquest.Size = new Size(65, 96);
+            conquest.SizeMode = PictureBoxSizeMode.StretchImage;
+            conquest.TabIndex = 5;
+            conquest.TabStop = false;
+            // 
+            // GameBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1087, 617);
+            Controls.Add(conquest);
             Controls.Add(healthLabel);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(invincible);
             Controls.Add(angstrom);
-            Name = "Form1";
+            Name = "GameBoard";
             Text = "Form1";
             KeyDown += move;
             ((System.ComponentModel.ISupportInitialize)invincible).EndInit();
             ((System.ComponentModel.ISupportInitialize)angstrom).EndInit();
+            ((System.ComponentModel.ISupportInitialize)conquest).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -111,5 +125,6 @@
         private Label label1;
         private Label label2;
         private Label healthLabel;
+        private PictureBox conquest;
     }
 }
