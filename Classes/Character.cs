@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace InvincibleGame.Classes
 {
@@ -17,30 +18,36 @@ namespace InvincibleGame.Classes
         public int Speed { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
-        public Character(string name, double health, int attackDamage, int armor, int abilityPower)
+        public Character(string name, int level)
         {
             Name = name;
-            Health = health;
-            AttackDamage = attackDamage;
-            Armor = armor;
-            AbilityPower = abilityPower;
+            Level = level;
+            Health = level * 10;
+            AttackDamage = level;
+            Armor = level;
             Experience = 0;
         }
         public void LevelUp()
         {
+            Experience = Experience - Level * 10;
             Level++;
             Health += 10;
             AttackDamage += 1;
             Armor += 1;
             AbilityPower += 1;
-            Experience = 0;
         }
     }
     public class Invincible : Character
     {
-        public Invincible(string name, double health, int attackDamage, int armor, int abilityPower) : base(name, health, attackDamage, armor, abilityPower)
+        public Invincible(string name, int level) : base(name, level)
         {
-            Level = 10;
+            Name = name;
+            Level = level;
+            Health = level * 15;
+            AttackDamage = level + 3;
+            Armor = level + 4;
+            Experience = 0;
+
         }
         public int punch()
         {
@@ -54,9 +61,14 @@ namespace InvincibleGame.Classes
     }
     public class Conquest : Character
     {
-        public Conquest(string name, double health, int attackDamage, int armor, int abilityPower) : base(name, health, attackDamage, armor, abilityPower)
+        public Conquest(string name, int level) : base(name, level)
         {
-            Level = 30;
+            Name = name;
+            Level = level;
+            Health = level * 10;
+            AttackDamage = level;
+            Armor = level;
+            Experience = 0;
 
         }
         public int ability1()
@@ -75,9 +87,15 @@ namespace InvincibleGame.Classes
     }
     public class Angstrom : Character
     {
-        public Angstrom(string name, double health, int attackDamage, int armor, int abilityPower) : base(name, health, attackDamage, armor, abilityPower)
+        public Angstrom(string name, int level) : base(name, level)
         {
-            Level = 5;
+            Name = name;
+            Level = level;
+            Health = level * 10;
+            AttackDamage = level;
+            Armor = level;
+            Experience = 0;
+            AbilityPower = Level + 3;
 
         }
         public int ability1()
@@ -91,6 +109,31 @@ namespace InvincibleGame.Classes
         public int ability3()
         {
             return AbilityPower + 1;
+        }
+    }
+    public class Zombie : Character
+    {
+        public Zombie(string name, int level) : base(name, level)
+        {
+            Name = name;
+            Level = level;
+            Health = level * 10;
+            AttackDamage = level;
+            Armor = level;
+            Experience = 0;
+
+        }
+        public int ability1()
+        {
+            return AttackDamage;
+        }
+        public int ability2()
+        {
+            return AttackDamage + 2;
+        }
+        public int ability3()
+        {
+            return AttackDamage + 3;
         }
     }
 }

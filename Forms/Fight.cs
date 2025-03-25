@@ -18,6 +18,7 @@ namespace InvincibleGame
         public Invincible invincible;
         public Angstrom angstrom;
         public Conquest conquest;
+        public Zombie zombie;
         public Character enemy;
         public double damage;
         public Fight(Invincible Invincible, Angstrom Angstrom)
@@ -36,9 +37,17 @@ namespace InvincibleGame
             this.enemy = Conquest;
             FightingSequence(invincible, conquest);
         }
+        public Fight(Invincible Invincible, Zombie Zombie)
+        {
+            InitializeComponent();
+            this.invincible = Invincible;
+            this.zombie = Zombie;
+            this.enemy = Zombie;
+            FightingSequence(invincible, zombie);
+        }
         public void FightingSequence(Character invincible, Character enemy)
         {
-            GameBoard.playSound(@"e:\C#projects\InvincibleGame\Resources\Music\battleMusic.wav");
+            GameBoard.playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\battleMusic.wav");
             FightHealthHero.Text = "Health: " + invincible.Health.ToString();
             FightADHero.Text = "Attack Damage: " + invincible.AttackDamage.ToString();
             FightArmorHero.Text = "Armor: " + invincible.Armor.ToString();
@@ -56,7 +65,22 @@ namespace InvincibleGame
             if (enemy.Name == "Conquest")
             {
                 fightImgConquest.Visible = true;
-            }    
+            }
+            if (enemy.Name == "Zombie")
+            {
+                fightImgZombie.Visible = true;
+            }
+        }
+        private void victory()
+        {
+            MessageBox.Show("You won!");
+            this.invincible.Experience += 10*this.enemy.Level;
+            while (this.invincible.Experience >= this.invincible.Level * 10)
+            {
+                this.invincible.LevelUp();
+                MessageBox.Show("You leveled up!");
+            }
+            this.Close();
         }
         private async void ButtonSkill1_Click(object sender, EventArgs e) {
            damage = this.invincible.punch() - (this.enemy.Armor * 0.05);
@@ -66,14 +90,8 @@ namespace InvincibleGame
            ButtonSkill2.Enabled = false;
             if (this.enemy.Health <= 0)
             {
-                MessageBox.Show("You won!");
-                this.invincible.Experience += 10;
-                if(this.invincible.Experience >= this.invincible.Level*10)
-                {
-                    this.invincible.LevelUp();
-                    MessageBox.Show("You leveled up!");
-                }
-                this.Close();
+                victory();
+                return;
             }
             await Task.Delay(500);
             enemyAttack();
@@ -87,14 +105,8 @@ namespace InvincibleGame
             ButtonSkill2.Enabled = false;
             if (this.enemy.Health <= 0)
             {
-                MessageBox.Show("You won!");
-                this.invincible.Experience += 10;
-                if (this.invincible.Experience >= this.invincible.Level * 10)
-                {
-                    this.invincible.LevelUp();
-                    MessageBox.Show("You leveled up!");
-                }
-                this.Close();
+                victory();
+                return;
             }
             await Task.Delay(500);
             enemyAttack();
@@ -154,7 +166,37 @@ namespace InvincibleGame
                     case 6:
                         damage = conquest.ability3() - (this.invincible.Armor * 0.05);
                         EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Conquestm used ability 3!";
+                        EnemyAbilityUseText.Text = "Conquest used ability 3!";
+                        this.invincible.Health -= damage;
+                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
+                        break;
+                }
+            }
+            if (enemy.Name == "Zombie")
+            {
+                switch (skill)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                        damage = zombie.ability1() - (this.invincible.Armor * 0.05);
+                        EnemyAbilityUseText.Visible = true;
+                        EnemyAbilityUseText.Text = "Zombie used ability 1!";
+                        this.invincible.Health -= damage;
+                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
+                        break;
+                    case 4:
+                    case 5:
+                        damage = zombie.ability2() - (this.invincible.Armor * 0.05);
+                        EnemyAbilityUseText.Visible = true;
+                        EnemyAbilityUseText.Text = "Zombie used ability 2!";
+                        this.invincible.Health -= damage;
+                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
+                        break;
+                    case 6:
+                        damage = zombie.ability3() - (this.invincible.Armor * 0.05);
+                        EnemyAbilityUseText.Visible = true;
+                        EnemyAbilityUseText.Text = "Zombie used ability 3!";
                         this.invincible.Health -= damage;
                         FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
                         break;

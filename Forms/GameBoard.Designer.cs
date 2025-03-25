@@ -36,12 +36,15 @@
             healthLabel = new Label();
             conquest = new PictureBox();
             pictureBox1 = new PictureBox();
-            LevelText = new Label();
+            levelLabel = new Label();
             ExitButton = new Button();
+            expLabel = new Label();
+            zombie = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)invincible).BeginInit();
             ((System.ComponentModel.ISupportInitialize)angstrom).BeginInit();
             ((System.ComponentModel.ISupportInitialize)conquest).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)zombie).BeginInit();
             SuspendLayout();
             // 
             // invincible
@@ -116,14 +119,14 @@
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 
-            // LevelText
+            // levelLabel
             // 
-            LevelText.AutoSize = true;
-            LevelText.Location = new Point(21, 310);
-            LevelText.Name = "LevelText";
-            LevelText.Size = new Size(38, 15);
-            LevelText.TabIndex = 7;
-            LevelText.Text = "label3";
+            levelLabel.AutoSize = true;
+            levelLabel.Location = new Point(21, 310);
+            levelLabel.Name = "levelLabel";
+            levelLabel.Size = new Size(38, 15);
+            levelLabel.TabIndex = 7;
+            levelLabel.Text = "label3";
             // 
             // ExitButton
             // 
@@ -133,15 +136,37 @@
             ExitButton.TabIndex = 8;
             ExitButton.Text = "Exit";
             ExitButton.UseVisualStyleBackColor = true;
-            ExitButton.Click += this.ExitButton_Click;
+            ExitButton.Click += ExitButton_Click;
+            // 
+            // expLabel
+            // 
+            expLabel.AutoSize = true;
+            expLabel.Location = new Point(21, 335);
+            expLabel.Name = "expLabel";
+            expLabel.Size = new Size(38, 15);
+            expLabel.TabIndex = 9;
+            expLabel.Text = "label3";
+            // 
+            // zombie
+            // 
+            zombie.BackColor = Color.Transparent;
+            zombie.Image = (Image)resources.GetObject("zombie.Image");
+            zombie.Location = new Point(627, 243);
+            zombie.Name = "zombie";
+            zombie.Size = new Size(73, 82);
+            zombie.SizeMode = PictureBoxSizeMode.StretchImage;
+            zombie.TabIndex = 10;
+            zombie.TabStop = false;
             // 
             // GameBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1087, 617);
+            Controls.Add(zombie);
+            Controls.Add(expLabel);
             Controls.Add(ExitButton);
-            Controls.Add(LevelText);
+            Controls.Add(levelLabel);
             Controls.Add(conquest);
             Controls.Add(healthLabel);
             Controls.Add(label2);
@@ -157,6 +182,7 @@
             ((System.ComponentModel.ISupportInitialize)angstrom).EndInit();
             ((System.ComponentModel.ISupportInitialize)conquest).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)zombie).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -170,7 +196,9 @@
         private Label healthLabel;
         private PictureBox conquest;
         private PictureBox pictureBox1;
-        private Label LevelText;
+        private Label levelLabel;
         private Button ExitButton;
+        private Label expLabel;
+        private PictureBox zombie;
     }
 }

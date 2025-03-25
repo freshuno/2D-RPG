@@ -15,13 +15,19 @@ namespace InvincibleGame
         public MainMenu()
         {
             InitializeComponent();
-            GameBoard.playSound(@"e:\C#projects\InvincibleGame\Resources\Music\mainMenuTheme.wav"); //temporary solution
+            GameBoard.playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\mainMenuTheme.wav"); //temporary solution
         }
         private void StartNewGameButton_Click(object sender, EventArgs e)
         {
             GameBoard gameBoard = new GameBoard();
+            gameBoard.FormClosed += new FormClosedEventHandler(closeGameWindow);
             gameBoard.Show();
             this.Hide();
+            
+        }
+        void closeGameWindow(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
         private void ExitButton_Click(object sender, EventArgs e)
         {

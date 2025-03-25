@@ -48,9 +48,11 @@ namespace InvincibleGame
             EnemyAbilityUseText = new Label();
             ButtonSkill2 = new Button();
             RunAwayButton = new Button();
+            fightImgZombie = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)fightImgInvincible).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fightImgAngstrom).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fightImgConquest).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fightImgZombie).BeginInit();
             SuspendLayout();
             // 
             // fightImgInvincible
@@ -162,20 +164,20 @@ namespace InvincibleGame
             // HeroName
             // 
             HeroName.AutoSize = true;
-            HeroName.Font = new Font("Ninjago", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HeroName.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             HeroName.Location = new Point(123, -1);
             HeroName.Name = "HeroName";
-            HeroName.Size = new Size(134, 34);
+            HeroName.Size = new Size(106, 37);
             HeroName.TabIndex = 11;
             HeroName.Text = "label1";
             // 
             // EnemyName
             // 
             EnemyName.AutoSize = true;
-            EnemyName.Font = new Font("Ninjago", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            EnemyName.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             EnemyName.Location = new Point(551, -1);
             EnemyName.Name = "EnemyName";
-            EnemyName.Size = new Size(134, 34);
+            EnemyName.Size = new Size(106, 37);
             EnemyName.TabIndex = 13;
             EnemyName.Text = "label1";
             // 
@@ -217,13 +219,26 @@ namespace InvincibleGame
             RunAwayButton.TabIndex = 17;
             RunAwayButton.Text = "Run Away";
             RunAwayButton.UseVisualStyleBackColor = true;
-            RunAwayButton.Click += this.RunAwayButton_Click;
+            RunAwayButton.Click += RunAwayButton_Click;
+            // 
+            // fightImgZombie
+            // 
+            fightImgZombie.BackColor = Color.Transparent;
+            fightImgZombie.Image = (Image)resources.GetObject("fightImgZombie.Image");
+            fightImgZombie.Location = new Point(470, 36);
+            fightImgZombie.Name = "fightImgZombie";
+            fightImgZombie.Size = new Size(274, 307);
+            fightImgZombie.SizeMode = PictureBoxSizeMode.StretchImage;
+            fightImgZombie.TabIndex = 18;
+            fightImgZombie.TabStop = false;
+            fightImgZombie.Visible = false;
             // 
             // Fight
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(868, 496);
+            Controls.Add(fightImgZombie);
             Controls.Add(RunAwayButton);
             Controls.Add(ButtonSkill2);
             Controls.Add(EnemyAbilityUseText);
@@ -246,6 +261,7 @@ namespace InvincibleGame
             ((System.ComponentModel.ISupportInitialize)fightImgInvincible).EndInit();
             ((System.ComponentModel.ISupportInitialize)fightImgAngstrom).EndInit();
             ((System.ComponentModel.ISupportInitialize)fightImgConquest).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fightImgZombie).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -269,5 +285,6 @@ namespace InvincibleGame
         private Label EnemyAbilityUseText;
         private Button ButtonSkill2;
         private Button RunAwayButton;
+        private PictureBox fightImgZombie;
     }
 }
