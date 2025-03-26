@@ -63,9 +63,49 @@ namespace Rpg2D.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Byte[].
         /// </summary>
-        internal static byte[] ambientMusic {
+        internal static byte[] fightMusic {
             get {
-                object obj = ResourceManager.GetObject("ambientMusic", resourceCulture);
+                object obj = ResourceManager.GetObject("fightMusic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Byte[].
+        /// </summary>
+        internal static byte[] forestLevelMusic {
+            get {
+                object obj = ResourceManager.GetObject("forestLevelMusic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Byte[].
+        /// </summary>
+        internal static byte[] heroMove {
+            get {
+                object obj = ResourceManager.GetObject("heroMove", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Byte[].
+        /// </summary>
+        internal static byte[] mainMenuMusic {
+            get {
+                object obj = ResourceManager.GetObject("mainMenuMusic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Byte[].
+        /// </summary>
+        internal static byte[] skrzyżowane_miecze_w_pikselowym_stylu__ikona_programu_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("skrzyżowane_miecze_w_pikselowym_stylu__ikona_programu-removebg-preview", resourceCulture);
                 return ((byte[])(obj));
             }
         }

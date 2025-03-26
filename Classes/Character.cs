@@ -26,7 +26,7 @@ namespace Rpg2d.Classes
             Health = level * 10;
             MaxHealth = Health;
             AttackDamage = level;
-            Armor = level;
+            Armor = level*5;
         }
         public void LevelUp()
         {

@@ -58,7 +58,7 @@
             // 
             WarlockModel.BackColor = Color.Transparent;
             WarlockModel.Image = (Image)resources.GetObject("WarlockModel.Image");
-            WarlockModel.Location = new Point(688, 22);
+            WarlockModel.Location = new Point(671, 60);
             WarlockModel.Name = "WarlockModel";
             WarlockModel.Size = new Size(73, 96);
             WarlockModel.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -79,7 +79,7 @@
             // 
             DragonModel.BackColor = Color.Transparent;
             DragonModel.Image = (Image)resources.GetObject("DragonModel.Image");
-            DragonModel.Location = new Point(588, 398);
+            DragonModel.Location = new Point(652, 457);
             DragonModel.Name = "DragonModel";
             DragonModel.Size = new Size(83, 96);
             DragonModel.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -97,11 +97,11 @@
             // 
             // ExitButton
             // 
-            ExitButton.Location = new Point(911, 543);
+            ExitButton.Location = new Point(836, 543);
             ExitButton.Name = "ExitButton";
-            ExitButton.Size = new Size(75, 23);
+            ExitButton.Size = new Size(150, 23);
             ExitButton.TabIndex = 8;
-            ExitButton.Text = "Exit";
+            ExitButton.Text = "Exit to Main Menu";
             ExitButton.UseVisualStyleBackColor = true;
             ExitButton.Click += ExitButton_Click;
             // 
@@ -132,19 +132,24 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(998, 617);
-            Controls.Add(WarlockModel);
-            Controls.Add(DragonModel);
-            Controls.Add(zombie);
             Controls.Add(expLabel);
             Controls.Add(levelLabel);
             Controls.Add(healthLabel);
+            Controls.Add(WarlockModel);
+            Controls.Add(DragonModel);
+            Controls.Add(zombie);
             Controls.Add(HeroModel);
             Controls.Add(ExitButton);
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
             Name = "GameBoard";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "TrueHero";
             TransparencyKey = Color.Green;
             KeyDown += move;
+            KeyUp += modelBackToIdle;
             ((System.ComponentModel.ISupportInitialize)HeroModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)WarlockModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)DragonModel).EndInit();

@@ -30,7 +30,7 @@ namespace Rpg2d
         }
         public void FightingSequence(Character invincible, Character enemy)
         {
-            GameBoard.playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\battleMusic.wav");
+            GameBoard.playSound(Rpg2D.Properties.Resources.fightMusic);
             FightHealthHero.Text = "Health: " + invincible.Health.ToString();
             FightADHero.Text = "Attack Damage: " + invincible.AttackDamage.ToString();
             FightArmorHero.Text = "Armor: " + invincible.Armor.ToString();

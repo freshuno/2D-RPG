@@ -60,12 +60,14 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(552, 516);
-            currentGameBoard.FormClosed += new FormClosedEventHandler(closeGameWindow);
             Controls.Add(StartNewGameButton);
             Controls.Add(ExitButton);
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainMenu";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "TrueHero";
             ResumeLayout(false);
         }
 

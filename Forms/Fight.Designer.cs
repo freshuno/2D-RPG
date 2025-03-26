@@ -264,8 +264,10 @@ namespace Rpg2d
             Controls.Add(fightImgDragon);
             Controls.Add(fightImgWarlock);
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Fight";
-            Text = "Form1";
+            Text = "TrueHero";
             ((System.ComponentModel.ISupportInitialize)fightImgHero).EndInit();
             ((System.ComponentModel.ISupportInitialize)fightImgWarlock).EndInit();
             ((System.ComponentModel.ISupportInitialize)fightImgDragon).EndInit();

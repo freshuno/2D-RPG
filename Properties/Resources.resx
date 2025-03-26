@@ -118,7 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ambientMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Music\ambientMusic.wav;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="fightMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Music\fightMusic.wav;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="forestLevelMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Music\forestLevelMusic.wav;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="heroMove" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Img\knightMove.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mainMenuMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Music\mainMenuMusic.wav;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="skrzyżowane_miecze_w_pikselowym_stylu__ikona_programu-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\skrzyżowane_miecze_w_pikselowym_stylu__ikona_programu-removebg-preview.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
