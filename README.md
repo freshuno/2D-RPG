@@ -1,4 +1,5 @@
-# TrueHero RPG 
+# TrueHero RPG  
+![Version](https://img.shields.io/badge/version-1.0.0--alpha-orange)  
 ![Windows Forms](https://img.shields.io/badge/-Windows%20Forms-0078D7?logo=.net)  
 *A turn-based RPG demo built with C# and Windows Forms*
 
