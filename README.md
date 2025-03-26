@@ -1,5 +1,5 @@
 # TrueHero RPG  
-![Version](https://img.shields.io/badge/version-1.0.0--alpha-orange)  
+![Version](https://img.shields.io/badge/version-1.0.0--demo-orange)  
 ![Windows Forms](https://img.shields.io/badge/-Windows%20Forms-0078D7?logo=.net)  
 *A turn-based RPG demo built with C# and Windows Forms*
 
@@ -19,6 +19,7 @@ Demonstration of game development patterns in Windows Forms, featuring:
 
 ## ⚠️ Assets Attribution
 Graphics: AI-generated using ChatGPT (DALL-E)
+
 Music/SFX: AI-generated using SUMO 
 
 ## 🚀 How to Run
