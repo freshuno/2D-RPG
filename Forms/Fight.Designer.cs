@@ -59,7 +59,7 @@ namespace Rpg2d
             // 
             fightImgHero.BackColor = Color.Transparent;
             fightImgHero.Image = (Image)resources.GetObject("fightImgHero.Image");
-            fightImgHero.Location = new Point(85, 36);
+            fightImgHero.Location = new Point(84, 71);
             fightImgHero.Name = "fightImgHero";
             fightImgHero.Size = new Size(207, 307);
             fightImgHero.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -68,8 +68,9 @@ namespace Rpg2d
             // 
             // fightImgWarlock
             // 
+            fightImgWarlock.BackColor = Color.Transparent;
             fightImgWarlock.Image = (Image)resources.GetObject("fightImgWarlock.Image");
-            fightImgWarlock.Location = new Point(498, 36);
+            fightImgWarlock.Location = new Point(498, 71);
             fightImgWarlock.Name = "fightImgWarlock";
             fightImgWarlock.Size = new Size(246, 307);
             fightImgWarlock.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -81,7 +82,7 @@ namespace Rpg2d
             // 
             fightImgDragon.BackColor = Color.Transparent;
             fightImgDragon.Image = (Image)resources.GetObject("fightImgDragon.Image");
-            fightImgDragon.Location = new Point(471, 36);
+            fightImgDragon.Location = new Point(471, 96);
             fightImgDragon.Name = "fightImgDragon";
             fightImgDragon.Size = new Size(274, 307);
             fightImgDragon.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -164,7 +165,9 @@ namespace Rpg2d
             // HeroName
             // 
             HeroName.AutoSize = true;
+            HeroName.BackColor = SystemColors.Control;
             HeroName.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HeroName.ForeColor = Color.Green;
             HeroName.Location = new Point(123, -1);
             HeroName.Name = "HeroName";
             HeroName.Size = new Size(106, 37);
@@ -174,7 +177,9 @@ namespace Rpg2d
             // EnemyName
             // 
             EnemyName.AutoSize = true;
+            EnemyName.BackColor = SystemColors.Control;
             EnemyName.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            EnemyName.ForeColor = Color.DarkRed;
             EnemyName.Location = new Point(551, -1);
             EnemyName.Name = "EnemyName";
             EnemyName.Size = new Size(106, 37);
@@ -213,7 +218,7 @@ namespace Rpg2d
             // 
             // RunAwayButton
             // 
-            RunAwayButton.Location = new Point(750, 461);
+            RunAwayButton.Location = new Point(751, 420);
             RunAwayButton.Name = "RunAwayButton";
             RunAwayButton.Size = new Size(75, 23);
             RunAwayButton.TabIndex = 17;
@@ -225,7 +230,7 @@ namespace Rpg2d
             // 
             fightImgZombie.BackColor = Color.Transparent;
             fightImgZombie.Image = (Image)resources.GetObject("fightImgZombie.Image");
-            fightImgZombie.Location = new Point(471, 39);
+            fightImgZombie.Location = new Point(470, 86);
             fightImgZombie.Name = "fightImgZombie";
             fightImgZombie.Size = new Size(274, 307);
             fightImgZombie.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -237,6 +242,8 @@ namespace Rpg2d
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(868, 496);
             Controls.Add(FightAPEnemy);
             Controls.Add(FightArmorEnemy);
@@ -256,6 +263,7 @@ namespace Rpg2d
             Controls.Add(fightImgHero);
             Controls.Add(fightImgDragon);
             Controls.Add(fightImgWarlock);
+            DoubleBuffered = true;
             Name = "Fight";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)fightImgHero).EndInit();

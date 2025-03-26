@@ -9,6 +9,7 @@ namespace Rpg2d
     {
         int locationX;
         int locationY;
+        bool isGameRunning = true;
         string rotation = "left";
         Hero heroCharacter;
         Warlock warlockCharacter;
@@ -22,10 +23,10 @@ namespace Rpg2d
         }
         public static void playSound(string path)
         {
-            SoundPlayer simpleSound = new SoundPlayer(path);
+            //SoundPlayer simpleSound = new SoundPlayer(path);
             //simpleSound.Play();
         }
-        public void startGame()
+        public async void startGame()
         {
             heroCharacter = new Hero("Unnamed Hero", 1);
             warlockCharacter = new Warlock("Akrash", 5);
@@ -35,6 +36,11 @@ namespace Rpg2d
             expLabel.Text = "Experience: " + heroCharacter.Experience.ToString() +"/" + heroCharacter.Level*10;
             playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\ambientMusic.wav"); //temporary solution
             newZombieSpawn();
+            while (isGameRunning)
+            {
+                await Task.Delay(200);
+                enemyRandomMove();
+            }
         }
         private void interaction()
         {
@@ -57,7 +63,9 @@ namespace Rpg2d
                 if (heroCharacter.Health <= 0)
                 {
                     MessageBox.Show("You died!");
-                    Application.Exit();
+                    isGameRunning = false;
+                    new MainMenu().Show();
+                    this.Hide();
                 }
                 healthLabel.Text = "Health: " + heroCharacter.Health.ToString();
                 playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\ambientMusic.wav"); //temporary solution
@@ -74,7 +82,9 @@ namespace Rpg2d
                 if (heroCharacter.Health <= 0)
                 {
                     MessageBox.Show("You died!");
-                    Application.Exit();
+                    isGameRunning = false;
+                    new MainMenu().Show();
+                    this.Hide();
                 }
                 healthLabel.Text = "Health: " + heroCharacter.Health.ToString();
                 playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\ambientMusic.wav"); //temporary solution
@@ -98,7 +108,9 @@ namespace Rpg2d
                 if (heroCharacter.Health <= 0)
                 {
                     MessageBox.Show("You died!");
-                    Application.Exit();
+                    isGameRunning = false;
+                    new MainMenu().Show();
+                    this.Hide();
                 }
                 healthLabel.Text = "Health: " + heroCharacter.Health.ToString();
                 playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\ambientMusic.wav"); //temporary solution
@@ -160,7 +172,9 @@ namespace Rpg2d
         }
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            isGameRunning = false;
+            new MainMenu().Show();
+            this.Hide();
         }
         private void newZombieSpawn()
         {
@@ -181,6 +195,46 @@ namespace Rpg2d
             } while (Math.Abs(HeroModel.Location.X - locationX) < 70 && (Math.Abs(HeroModel.Location.Y - locationY) < 120));
             zombieCharacter = new Zombie("Zombie",rndLevel);
             zombie.Location = new System.Drawing.Point(locationX, locationY);
+        }
+        private async void enemyRandomMove()
+        {
+            int rndMove = rnd.Next(1, 5);
+            var location = zombie.Location;
+            switch (rndMove)
+            {
+                case 1:
+                    if (location.Y - 5 < 0)
+                    {
+                        break;
+                    }
+                    location.Y = location.Y - 5;
+                    zombie.Location = location;
+                    break;
+                case 2:
+                    if (location.Y - 5 > 520)
+                    {
+                        break;
+                    }
+                    location.Y = location.Y + 5;
+                    zombie.Location = location;
+                    break;
+                case 3:
+                    if (location.X - 5 < 0)
+                    {
+                        break;
+                    }
+                    location.X = location.X - 5;
+                    zombie.Location = location;
+                    break;
+                case 4:
+                    if (location.X - 5 > 1041)
+                    {
+                        break;
+                    }
+                    location.X = location.X + 5;
+                    zombie.Location = location;
+                    break;
+            }
         }
     }
 }

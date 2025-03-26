@@ -39,8 +39,8 @@ namespace Rpg2d
             FightADEnemy.Text = "Attack Damage: " + enemy.AttackDamage.ToString();
             FightArmorEnemy.Text = "Armor: " + enemy.Armor.ToString();
             FightAPEnemy.Text = "Ability Power: " + enemy.AbilityPower.ToString();
-            HeroName.Text = invincible.Name + "(" + invincible.Level + ")";
-            EnemyName.Text = enemy.Name + "(" + enemy.Level + ")";
+            HeroName.Text = invincible.Name + " (" + invincible.Level + ")";
+            EnemyName.Text = enemy.Name + " (" + enemy.Level + ")";
             if (enemy.Name == "Akrash")
             {
                 fightImgWarlock.Visible = true;

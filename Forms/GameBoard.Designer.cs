@@ -132,14 +132,14 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(998, 617);
+            Controls.Add(WarlockModel);
+            Controls.Add(DragonModel);
+            Controls.Add(zombie);
             Controls.Add(expLabel);
             Controls.Add(levelLabel);
             Controls.Add(healthLabel);
             Controls.Add(HeroModel);
-            Controls.Add(zombie);
             Controls.Add(ExitButton);
-            Controls.Add(DragonModel);
-            Controls.Add(WarlockModel);
             DoubleBuffered = true;
             Name = "GameBoard";
             Text = "Form1";

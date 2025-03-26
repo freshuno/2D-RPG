@@ -12,18 +12,22 @@ namespace Rpg2d
 {
     public partial class MainMenu: Form
     {
+        private GameBoard currentGameBoard;
         public MainMenu()
         {
             InitializeComponent();
+            if (currentGameBoard != null)
+            {
+                currentGameBoard.Close();
+                currentGameBoard.Dispose();
+            }
             GameBoard.playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\mainMenuTheme.wav"); //temporary solution
         }
         private void StartNewGameButton_Click(object sender, EventArgs e)
         {
-            GameBoard gameBoard = new GameBoard();
-            gameBoard.FormClosed += new FormClosedEventHandler(closeGameWindow);
-            gameBoard.Show();
+            currentGameBoard = new GameBoard();
+            currentGameBoard.Show();
             this.Hide();
-            
         }
         void closeGameWindow(object sender, FormClosedEventArgs e)
         {
