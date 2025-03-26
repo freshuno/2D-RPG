@@ -1,4 +1,4 @@
-﻿namespace InvincibleGame
+﻿namespace Rpg2d
 {
     partial class MainMenu
     {

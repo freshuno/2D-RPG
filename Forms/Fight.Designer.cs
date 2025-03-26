@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Tracing;
 
-namespace InvincibleGame
+namespace Rpg2d
 {
     partial class Fight
     {
@@ -31,9 +31,9 @@ namespace InvincibleGame
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fight));
-            fightImgInvincible = new PictureBox();
-            fightImgAngstrom = new PictureBox();
-            fightImgConquest = new PictureBox();
+            fightImgHero = new PictureBox();
+            fightImgWarlock = new PictureBox();
+            fightImgDragon = new PictureBox();
             FightHealthHero = new Label();
             FightADHero = new Label();
             FightArmorHero = new Label();
@@ -49,45 +49,45 @@ namespace InvincibleGame
             ButtonSkill2 = new Button();
             RunAwayButton = new Button();
             fightImgZombie = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)fightImgInvincible).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)fightImgAngstrom).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)fightImgConquest).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fightImgHero).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fightImgWarlock).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fightImgDragon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fightImgZombie).BeginInit();
             SuspendLayout();
             // 
-            // fightImgInvincible
+            // fightImgHero
             // 
-            fightImgInvincible.BackColor = Color.Transparent;
-            fightImgInvincible.Image = (Image)resources.GetObject("fightImgInvincible.Image");
-            fightImgInvincible.Location = new Point(123, 36);
-            fightImgInvincible.Name = "fightImgInvincible";
-            fightImgInvincible.Size = new Size(135, 307);
-            fightImgInvincible.SizeMode = PictureBoxSizeMode.StretchImage;
-            fightImgInvincible.TabIndex = 0;
-            fightImgInvincible.TabStop = false;
+            fightImgHero.BackColor = Color.Transparent;
+            fightImgHero.Image = (Image)resources.GetObject("fightImgHero.Image");
+            fightImgHero.Location = new Point(85, 36);
+            fightImgHero.Name = "fightImgHero";
+            fightImgHero.Size = new Size(207, 307);
+            fightImgHero.SizeMode = PictureBoxSizeMode.StretchImage;
+            fightImgHero.TabIndex = 0;
+            fightImgHero.TabStop = false;
             // 
-            // fightImgAngstrom
+            // fightImgWarlock
             // 
-            fightImgAngstrom.Image = (Image)resources.GetObject("fightImgAngstrom.Image");
-            fightImgAngstrom.Location = new Point(551, 36);
-            fightImgAngstrom.Name = "fightImgAngstrom";
-            fightImgAngstrom.Size = new Size(193, 307);
-            fightImgAngstrom.SizeMode = PictureBoxSizeMode.StretchImage;
-            fightImgAngstrom.TabIndex = 1;
-            fightImgAngstrom.TabStop = false;
-            fightImgAngstrom.Visible = false;
+            fightImgWarlock.Image = (Image)resources.GetObject("fightImgWarlock.Image");
+            fightImgWarlock.Location = new Point(498, 36);
+            fightImgWarlock.Name = "fightImgWarlock";
+            fightImgWarlock.Size = new Size(246, 307);
+            fightImgWarlock.SizeMode = PictureBoxSizeMode.StretchImage;
+            fightImgWarlock.TabIndex = 1;
+            fightImgWarlock.TabStop = false;
+            fightImgWarlock.Visible = false;
             // 
-            // fightImgConquest
+            // fightImgDragon
             // 
-            fightImgConquest.BackColor = Color.Transparent;
-            fightImgConquest.Image = (Image)resources.GetObject("fightImgConquest.Image");
-            fightImgConquest.Location = new Point(471, 36);
-            fightImgConquest.Name = "fightImgConquest";
-            fightImgConquest.Size = new Size(274, 307);
-            fightImgConquest.SizeMode = PictureBoxSizeMode.StretchImage;
-            fightImgConquest.TabIndex = 2;
-            fightImgConquest.TabStop = false;
-            fightImgConquest.Visible = false;
+            fightImgDragon.BackColor = Color.Transparent;
+            fightImgDragon.Image = (Image)resources.GetObject("fightImgDragon.Image");
+            fightImgDragon.Location = new Point(471, 36);
+            fightImgDragon.Name = "fightImgDragon";
+            fightImgDragon.Size = new Size(274, 307);
+            fightImgDragon.SizeMode = PictureBoxSizeMode.StretchImage;
+            fightImgDragon.TabIndex = 2;
+            fightImgDragon.TabStop = false;
+            fightImgDragon.Visible = false;
             // 
             // FightHealthHero
             // 
@@ -225,7 +225,7 @@ namespace InvincibleGame
             // 
             fightImgZombie.BackColor = Color.Transparent;
             fightImgZombie.Image = (Image)resources.GetObject("fightImgZombie.Image");
-            fightImgZombie.Location = new Point(470, 36);
+            fightImgZombie.Location = new Point(471, 39);
             fightImgZombie.Name = "fightImgZombie";
             fightImgZombie.Size = new Size(274, 307);
             fightImgZombie.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -238,14 +238,6 @@ namespace InvincibleGame
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(868, 496);
-            Controls.Add(fightImgZombie);
-            Controls.Add(RunAwayButton);
-            Controls.Add(ButtonSkill2);
-            Controls.Add(EnemyAbilityUseText);
-            Controls.Add(ButtonSkill1);
-            Controls.Add(EnemyName);
-            Controls.Add(HeroName);
-            Controls.Add(fightImgInvincible);
             Controls.Add(FightAPEnemy);
             Controls.Add(FightArmorEnemy);
             Controls.Add(FightADEnemy);
@@ -254,13 +246,21 @@ namespace InvincibleGame
             Controls.Add(FightArmorHero);
             Controls.Add(FightADHero);
             Controls.Add(FightHealthHero);
-            Controls.Add(fightImgConquest);
-            Controls.Add(fightImgAngstrom);
+            Controls.Add(fightImgZombie);
+            Controls.Add(RunAwayButton);
+            Controls.Add(ButtonSkill2);
+            Controls.Add(EnemyAbilityUseText);
+            Controls.Add(ButtonSkill1);
+            Controls.Add(EnemyName);
+            Controls.Add(HeroName);
+            Controls.Add(fightImgHero);
+            Controls.Add(fightImgDragon);
+            Controls.Add(fightImgWarlock);
             Name = "Fight";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)fightImgInvincible).EndInit();
-            ((System.ComponentModel.ISupportInitialize)fightImgAngstrom).EndInit();
-            ((System.ComponentModel.ISupportInitialize)fightImgConquest).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fightImgHero).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fightImgWarlock).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fightImgDragon).EndInit();
             ((System.ComponentModel.ISupportInitialize)fightImgZombie).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -268,9 +268,9 @@ namespace InvincibleGame
 
         #endregion
 
-        private PictureBox fightImgInvincible;
-        private PictureBox fightImgAngstrom;
-        private PictureBox fightImgConquest;
+        private PictureBox fightImgHero;
+        private PictureBox fightImgWarlock;
+        private PictureBox fightImgDragon;
         private Label FightHealthHero;
         private Label FightADHero;
         private Label FightArmorHero;

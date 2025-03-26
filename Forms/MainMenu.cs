@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InvincibleGame
+namespace Rpg2d
 {
     public partial class MainMenu: Form
     {

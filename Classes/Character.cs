@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace InvincibleGame.Classes
+namespace Rpg2d.Classes
 {
     public abstract class Character
     {

@@ -1,15 +1,15 @@
 using System.Media;
-using InvincibleGame.Classes;
+using Rpg2d.Classes;
 
 
 
-namespace InvincibleGame
+namespace Rpg2d
 {
     public partial class GameBoard : Form
     {
         int locationX;
         int locationY;
-        string rotation = "right";
+        string rotation = "left";
         Hero heroCharacter;
         Warlock warlockCharacter;
         Dragon dragonCharacter;
@@ -23,7 +23,7 @@ namespace InvincibleGame
         public static void playSound(string path)
         {
             SoundPlayer simpleSound = new SoundPlayer(path);
-            simpleSound.Play();
+            //simpleSound.Play();
         }
         public void startGame()
         {
@@ -104,7 +104,7 @@ namespace InvincibleGame
                 playSound(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Music\ambientMusic.wav"); //temporary solution
             }
         }
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //not blocking movement
         {
             move(this, new KeyEventArgs(keyData));
             return true;
@@ -136,11 +136,10 @@ namespace InvincibleGame
                     }
                     location.X = location.X - 5;
                     HeroModel.Location = location;
-                    //rotating invincible horizontally
                     if(rotation == "right")
                     {
                        HeroModel.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
-                        rotation = "left";
+                       rotation = "left";
                     }
                     break;
                 case Keys.D:

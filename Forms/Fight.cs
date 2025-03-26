@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using InvincibleGame.Classes;
+using Rpg2d.Classes;
 
-namespace InvincibleGame
+namespace Rpg2d
 {
     public partial class Fight : Form
     {
@@ -21,29 +21,12 @@ namespace InvincibleGame
         public Zombie zombieCharacter;
         public Character enemyCharacter;
         public double damage;
-        public Fight(Hero Invincible, Warlock Angstrom)
+        public Fight(Hero Hero, Character Enemy)
         {
             InitializeComponent();
-            this.heroCharacter = Invincible;
-            this.warlockCharacter = Angstrom;
-            this.enemyCharacter = Angstrom;
-            FightingSequence(heroCharacter, warlockCharacter);
-        }
-        public Fight(Hero Invincible, Dragon Conquest)
-        {
-            InitializeComponent();
-            this.heroCharacter = Invincible;
-            this.dragonCharacter = Conquest;
-            this.enemyCharacter = Conquest;
-            FightingSequence(heroCharacter, dragonCharacter);
-        }
-        public Fight(Hero Invincible, Zombie Zombie)
-        {
-            InitializeComponent();
-            this.heroCharacter = Invincible;
-            this.zombieCharacter = Zombie;
-            this.enemyCharacter = Zombie;
-            FightingSequence(heroCharacter, zombieCharacter);
+            this.heroCharacter = Hero;
+            this.enemyCharacter = Enemy;
+            FightingSequence(heroCharacter, enemyCharacter);
         }
         public void FightingSequence(Character invincible, Character enemy)
         {
@@ -58,13 +41,13 @@ namespace InvincibleGame
             FightAPEnemy.Text = "Ability Power: " + enemy.AbilityPower.ToString();
             HeroName.Text = invincible.Name + "(" + invincible.Level + ")";
             EnemyName.Text = enemy.Name + "(" + enemy.Level + ")";
-            if (enemy.Name == "Angstrom")
+            if (enemy.Name == "Akrash")
             {
-                fightImgAngstrom.Visible = true;
+                fightImgWarlock.Visible = true;
             }
-            if (enemy.Name == "Conquest")
+            if (enemy.Name == "Belmentor")
             {
-                fightImgConquest.Visible = true;
+                fightImgDragon.Visible = true;
             }
             if (enemy.Name == "Zombie")
             {

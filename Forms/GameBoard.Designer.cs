@@ -1,4 +1,4 @@
-﻿namespace InvincibleGame
+﻿namespace Rpg2d
 {
     partial class GameBoard
     {
@@ -33,7 +33,6 @@
             WarlockModel = new PictureBox();
             healthLabel = new Label();
             DragonModel = new PictureBox();
-            pictureBox1 = new PictureBox();
             levelLabel = new Label();
             ExitButton = new Button();
             expLabel = new Label();
@@ -41,7 +40,6 @@
             ((System.ComponentModel.ISupportInitialize)HeroModel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WarlockModel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DragonModel).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)zombie).BeginInit();
             SuspendLayout();
             // 
@@ -49,19 +47,20 @@
             // 
             HeroModel.BackColor = Color.Transparent;
             HeroModel.Image = (Image)resources.GetObject("HeroModel.Image");
-            HeroModel.Location = new Point(341, 175);
+            HeroModel.Location = new Point(342, 175);
             HeroModel.Name = "HeroModel";
-            HeroModel.Size = new Size(47, 96);
+            HeroModel.Size = new Size(72, 82);
             HeroModel.SizeMode = PictureBoxSizeMode.StretchImage;
             HeroModel.TabIndex = 0;
             HeroModel.TabStop = false;
             // 
             // WarlockModel
             // 
+            WarlockModel.BackColor = Color.Transparent;
             WarlockModel.Image = (Image)resources.GetObject("WarlockModel.Image");
             WarlockModel.Location = new Point(688, 22);
             WarlockModel.Name = "WarlockModel";
-            WarlockModel.Size = new Size(65, 96);
+            WarlockModel.Size = new Size(73, 96);
             WarlockModel.SizeMode = PictureBoxSizeMode.StretchImage;
             WarlockModel.TabIndex = 1;
             WarlockModel.TabStop = false;
@@ -69,7 +68,7 @@
             // healthLabel
             // 
             healthLabel.AutoSize = true;
-            healthLabel.BackColor = Color.Transparent;
+            healthLabel.BackColor = SystemColors.Control;
             healthLabel.Location = new Point(21, 285);
             healthLabel.Name = "healthLabel";
             healthLabel.Size = new Size(38, 15);
@@ -78,24 +77,14 @@
             // 
             // DragonModel
             // 
-            DragonModel.BackColor = Color.Green;
+            DragonModel.BackColor = Color.Transparent;
             DragonModel.Image = (Image)resources.GetObject("DragonModel.Image");
             DragonModel.Location = new Point(588, 398);
             DragonModel.Name = "DragonModel";
-            DragonModel.Size = new Size(65, 96);
+            DragonModel.Size = new Size(83, 96);
             DragonModel.SizeMode = PictureBoxSizeMode.StretchImage;
             DragonModel.TabIndex = 5;
             DragonModel.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1091, 614);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
             // 
             // levelLabel
             // 
@@ -108,7 +97,7 @@
             // 
             // ExitButton
             // 
-            ExitButton.Location = new Point(940, 545);
+            ExitButton.Location = new Point(911, 543);
             ExitButton.Name = "ExitButton";
             ExitButton.Size = new Size(75, 23);
             ExitButton.TabIndex = 8;
@@ -140,16 +129,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1087, 617);
-            Controls.Add(zombie);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(998, 617);
             Controls.Add(expLabel);
-            Controls.Add(ExitButton);
             Controls.Add(levelLabel);
-            Controls.Add(DragonModel);
             Controls.Add(healthLabel);
             Controls.Add(HeroModel);
+            Controls.Add(zombie);
+            Controls.Add(ExitButton);
+            Controls.Add(DragonModel);
             Controls.Add(WarlockModel);
-            Controls.Add(pictureBox1);
+            DoubleBuffered = true;
             Name = "GameBoard";
             Text = "Form1";
             TransparencyKey = Color.Green;
@@ -157,7 +148,6 @@
             ((System.ComponentModel.ISupportInitialize)HeroModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)WarlockModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)DragonModel).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)zombie).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -169,7 +159,6 @@
         private PictureBox WarlockModel;
         private Label healthLabel;
         private PictureBox DragonModel;
-        private PictureBox pictureBox1;
         private Label levelLabel;
         private Button ExitButton;
         private Label expLabel;
