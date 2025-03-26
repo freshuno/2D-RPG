@@ -15,35 +15,35 @@ namespace InvincibleGame
 {
     public partial class Fight : Form
     {
-        public Invincible invincible;
-        public Angstrom angstrom;
-        public Conquest conquest;
-        public Zombie zombie;
-        public Character enemy;
+        public Hero heroCharacter;
+        public Warlock warlockCharacter;
+        public Dragon dragonCharacter;
+        public Zombie zombieCharacter;
+        public Character enemyCharacter;
         public double damage;
-        public Fight(Invincible Invincible, Angstrom Angstrom)
+        public Fight(Hero Invincible, Warlock Angstrom)
         {
             InitializeComponent();
-            this.invincible = Invincible;
-            this.angstrom = Angstrom;
-            this.enemy = Angstrom;
-            FightingSequence(invincible, angstrom);
+            this.heroCharacter = Invincible;
+            this.warlockCharacter = Angstrom;
+            this.enemyCharacter = Angstrom;
+            FightingSequence(heroCharacter, warlockCharacter);
         }
-        public Fight(Invincible Invincible, Conquest Conquest)
+        public Fight(Hero Invincible, Dragon Conquest)
         {
             InitializeComponent();
-            this.invincible = Invincible;
-            this.conquest = Conquest;
-            this.enemy = Conquest;
-            FightingSequence(invincible, conquest);
+            this.heroCharacter = Invincible;
+            this.dragonCharacter = Conquest;
+            this.enemyCharacter = Conquest;
+            FightingSequence(heroCharacter, dragonCharacter);
         }
-        public Fight(Invincible Invincible, Zombie Zombie)
+        public Fight(Hero Invincible, Zombie Zombie)
         {
             InitializeComponent();
-            this.invincible = Invincible;
-            this.zombie = Zombie;
-            this.enemy = Zombie;
-            FightingSequence(invincible, zombie);
+            this.heroCharacter = Invincible;
+            this.zombieCharacter = Zombie;
+            this.enemyCharacter = Zombie;
+            FightingSequence(heroCharacter, zombieCharacter);
         }
         public void FightingSequence(Character invincible, Character enemy)
         {
@@ -74,21 +74,21 @@ namespace InvincibleGame
         private void victory()
         {
             MessageBox.Show("You won!");
-            this.invincible.Experience += 10*this.enemy.Level;
-            while (this.invincible.Experience >= this.invincible.Level * 10)
+            this.heroCharacter.Experience += 10*this.enemyCharacter.Level;
+            while (this.heroCharacter.Experience >= this.heroCharacter.Level * 10)
             {
-                this.invincible.LevelUp();
+                this.heroCharacter.LevelUp();
                 MessageBox.Show("You leveled up!");
             }
             this.Close();
         }
         private async void ButtonSkill1_Click(object sender, EventArgs e) {
-           damage = this.invincible.punch() - (this.enemy.Armor * 0.05);
-           this.enemy.Health -= damage;
-           FightHealthEnemy.Text = "Health: " + this.enemy.Health.ToString() + " (-" + damage + ")";
+           damage = this.heroCharacter.UseAbility1() - (this.enemyCharacter.Armor * 0.05);
+           this.enemyCharacter.Health -= damage;
+           FightHealthEnemy.Text = "Health: " + this.enemyCharacter.Health.ToString() + " (-" + damage + ")";
            ButtonSkill1.Enabled = false;
            ButtonSkill2.Enabled = false;
-            if (this.enemy.Health <= 0)
+            if (this.enemyCharacter.Health <= 0)
             {
                 victory();
                 return;
@@ -98,12 +98,12 @@ namespace InvincibleGame
         }
         private async void ButtonSkill2_Click(object sender, EventArgs e)
         {
-            damage = this.invincible.kick() - (this.enemy.Armor * 0.05);
-            this.enemy.Health -= damage;
-            FightHealthEnemy.Text = $"Health: " + this.enemy.Health.ToString() + " (-" + damage + ")";
+            damage = this.heroCharacter.UseAbility2() - (this.enemyCharacter.Armor * 0.05);
+            this.enemyCharacter.Health -= damage;
+            FightHealthEnemy.Text = $"Health: " + this.enemyCharacter.Health.ToString() + " (-" + damage + ")";
             ButtonSkill1.Enabled = false;
             ButtonSkill2.Enabled = false;
-            if (this.enemy.Health <= 0)
+            if (this.enemyCharacter.Health <= 0)
             {
                 victory();
                 return;
@@ -115,94 +115,34 @@ namespace InvincibleGame
         {
             Random rnd = new Random();
             int skill = rnd.Next(1, 7);
-            if (enemy.Name == "Angstrom")
+            switch (skill)
             {
-                switch (skill)
-                {
-                    case 1: case 2: case 3:
-                        damage = angstrom.ability1() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Angstrom used ability 1!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                    case 4: case 5:
-                        damage = angstrom.ability2() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Angstrom used ability 2!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                    case 6:
-                        damage = angstrom.ability3() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Angstrom used ability 3!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                }
+                case 1:
+                case 2:
+                case 3:
+                    damage = enemyCharacter.UseAbility1() - (this.heroCharacter.Armor * 0.05);
+                    EnemyAbilityUseText.Visible = true;
+                    EnemyAbilityUseText.Text = $"{enemyCharacter.Name} used ability 1!";
+                    this.heroCharacter.Health -= damage;
+                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString() + " (-" + damage + ")";
+                    break;
+                case 4:
+                case 5:
+                    damage = enemyCharacter.UseAbility2() - (this.heroCharacter.Armor * 0.05);
+                    EnemyAbilityUseText.Visible = true;
+                    EnemyAbilityUseText.Text = $"{enemyCharacter.Name} used ability 2!";
+                    this.heroCharacter.Health -= damage;
+                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString() + " (-" + damage + ")";
+                    break;
+                case 6:
+                    damage = enemyCharacter.UseAbility3() - (this.heroCharacter.Armor * 0.05);
+                    EnemyAbilityUseText.Visible = true;
+                    EnemyAbilityUseText.Text = $"{enemyCharacter.Name} used ability 3!";
+                    this.heroCharacter.Health -= damage;
+                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString() + " (-" + damage + ")";
+                    break;
             }
-            if (enemy.Name == "Conquest")
-            {
-                switch (skill)
-                {
-                    case 1:
-                    case 2:
-                    case 3:
-                        damage = conquest.ability1() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Conquest used ability 1!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                    case 4:
-                    case 5:
-                        damage = conquest.ability2() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Conquest used ability 2!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                    case 6:
-                        damage = conquest.ability3() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Conquest used ability 3!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                }
-            }
-            if (enemy.Name == "Zombie")
-            {
-                switch (skill)
-                {
-                    case 1:
-                    case 2:
-                    case 3:
-                        damage = zombie.ability1() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Zombie used ability 1!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                    case 4:
-                    case 5:
-                        damage = zombie.ability2() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Zombie used ability 2!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                    case 6:
-                        damage = zombie.ability3() - (this.invincible.Armor * 0.05);
-                        EnemyAbilityUseText.Visible = true;
-                        EnemyAbilityUseText.Text = "Zombie used ability 3!";
-                        this.invincible.Health -= damage;
-                        FightHealthHero.Text = "Health: " + this.invincible.Health.ToString() + " (-" + damage + ")";
-                        break;
-                }
-            }
-            if (this.invincible.Health <= 0)
+            if (this.heroCharacter.Health <= 0)
             {
                 MessageBox.Show("You lost!");
                 this.Close();

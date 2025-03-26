@@ -7,15 +7,16 @@ using System.Xml.Linq;
 
 namespace InvincibleGame.Classes
 {
-    public class Character
+    public abstract class Character
     {
         public string Name { get; set; }
         public double Health { get; set; }
+        public double MaxHealth { get; set; }
         public int AttackDamage { get; set; }
         public int Armor { get; set; }
         public int AbilityPower { get; set; }
         public int MagicResistance { get; set; }
-        public int Speed { get; set; }
+        public int Speed { get; set; } //not used for now
         public int Level { get; set; }
         public int Experience { get; set; }
         public Character(string name, int level)
@@ -23,90 +24,87 @@ namespace InvincibleGame.Classes
             Name = name;
             Level = level;
             Health = level * 10;
+            MaxHealth = Health;
             AttackDamage = level;
             Armor = level;
-            Experience = 0;
         }
         public void LevelUp()
         {
             Experience = Experience - Level * 10;
             Level++;
-            Health += 10;
+            MaxHealth += 10;
+            Health = MaxHealth;
             AttackDamage += 1;
             Armor += 1;
             AbilityPower += 1;
         }
+        public abstract int UseAbility1();
+        public abstract int UseAbility2();
+        public abstract int UseAbility3();
     }
-    public class Invincible : Character
+    public class Hero : Character
     {
-        public Invincible(string name, int level) : base(name, level)
+        public Hero(string name, int level) : base(name, level)
         {
-            Name = name;
-            Level = level;
             Health = level * 15;
+            MaxHealth = Health;
             AttackDamage = level + 3;
             Armor = level + 4;
-            Experience = 0;
 
         }
-        public int punch()
+        public override int UseAbility1()
         {
             return AttackDamage + Level;
         }
-        public int kick()
+        public override int UseAbility2()
         {
             return AttackDamage*Level;
         }
+        public override int UseAbility3()
+        {
+            return AttackDamage + 2 * Level;
+        }
 
     }
-    public class Conquest : Character
+    public class Dragon : Character
     {
-        public Conquest(string name, int level) : base(name, level)
+        public Dragon(string name, int level) : base(name, level)
         {
-            Name = name;
-            Level = level;
-            Health = level * 10;
-            AttackDamage = level;
-            Armor = level;
-            Experience = 0;
+            AttackDamage = Level + 2;
 
         }
-        public int ability1()
+        public override int UseAbility1()
         {
             return AttackDamage;
         }
-        public int ability2()
+        public override int UseAbility2()
         {
             return AttackDamage + 3;
         }
-        public int ability3()
+        public override int UseAbility3()
         {
             return AttackDamage + 6;
         }
 
     }
-    public class Angstrom : Character
+    public class Warlock : Character
     {
-        public Angstrom(string name, int level) : base(name, level)
+        public Warlock(string name, int level) : base(name, level)
         {
-            Name = name;
-            Level = level;
-            Health = level * 10;
-            AttackDamage = level;
-            Armor = level;
-            Experience = 0;
+
+            AttackDamage = 0;
             AbilityPower = Level + 3;
 
         }
-        public int ability1()
+        public override int UseAbility1()
         {
             return AbilityPower * 2;
         }
-        public int ability2()
+        public override int UseAbility2()
         {
             return AbilityPower;
         }
-        public int ability3()
+        public override int UseAbility3()
         {
             return AbilityPower + 1;
         }
@@ -115,23 +113,18 @@ namespace InvincibleGame.Classes
     {
         public Zombie(string name, int level) : base(name, level)
         {
-            Name = name;
-            Level = level;
-            Health = level * 10;
-            AttackDamage = level;
-            Armor = level;
-            Experience = 0;
+            AttackDamage = Level + 1;
 
         }
-        public int ability1()
+        public override int UseAbility1()
         {
             return AttackDamage;
         }
-        public int ability2()
+        public override int UseAbility2()
         {
             return AttackDamage + 2;
         }
-        public int ability3()
+        public override int UseAbility3()
         {
             return AttackDamage + 3;
         }

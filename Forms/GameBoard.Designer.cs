@@ -29,64 +29,42 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameBoard));
-            invincible = new PictureBox();
-            angstrom = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
+            HeroModel = new PictureBox();
+            WarlockModel = new PictureBox();
             healthLabel = new Label();
-            conquest = new PictureBox();
+            DragonModel = new PictureBox();
             pictureBox1 = new PictureBox();
             levelLabel = new Label();
             ExitButton = new Button();
             expLabel = new Label();
             zombie = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)invincible).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)angstrom).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)conquest).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)HeroModel).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)WarlockModel).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DragonModel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)zombie).BeginInit();
             SuspendLayout();
             // 
-            // invincible
+            // HeroModel
             // 
-            invincible.BackColor = Color.Transparent;
-            invincible.Image = (Image)resources.GetObject("invincible.Image");
-            invincible.Location = new Point(341, 175);
-            invincible.Name = "invincible";
-            invincible.Size = new Size(47, 96);
-            invincible.SizeMode = PictureBoxSizeMode.StretchImage;
-            invincible.TabIndex = 0;
-            invincible.TabStop = false;
+            HeroModel.BackColor = Color.Transparent;
+            HeroModel.Image = (Image)resources.GetObject("HeroModel.Image");
+            HeroModel.Location = new Point(341, 175);
+            HeroModel.Name = "HeroModel";
+            HeroModel.Size = new Size(47, 96);
+            HeroModel.SizeMode = PictureBoxSizeMode.StretchImage;
+            HeroModel.TabIndex = 0;
+            HeroModel.TabStop = false;
             // 
-            // angstrom
+            // WarlockModel
             // 
-            angstrom.Image = (Image)resources.GetObject("angstrom.Image");
-            angstrom.Location = new Point(688, 22);
-            angstrom.Name = "angstrom";
-            angstrom.Size = new Size(65, 96);
-            angstrom.SizeMode = PictureBoxSizeMode.StretchImage;
-            angstrom.TabIndex = 1;
-            angstrom.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Location = new Point(21, 383);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 2;
-            label1.Text = "label1";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Location = new Point(21, 398);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 3;
-            label2.Text = "label2";
+            WarlockModel.Image = (Image)resources.GetObject("WarlockModel.Image");
+            WarlockModel.Location = new Point(688, 22);
+            WarlockModel.Name = "WarlockModel";
+            WarlockModel.Size = new Size(65, 96);
+            WarlockModel.SizeMode = PictureBoxSizeMode.StretchImage;
+            WarlockModel.TabIndex = 1;
+            WarlockModel.TabStop = false;
             // 
             // healthLabel
             // 
@@ -98,16 +76,16 @@
             healthLabel.TabIndex = 4;
             healthLabel.Text = "label3";
             // 
-            // conquest
+            // DragonModel
             // 
-            conquest.BackColor = Color.Green;
-            conquest.Image = (Image)resources.GetObject("conquest.Image");
-            conquest.Location = new Point(588, 398);
-            conquest.Name = "conquest";
-            conquest.Size = new Size(65, 96);
-            conquest.SizeMode = PictureBoxSizeMode.StretchImage;
-            conquest.TabIndex = 5;
-            conquest.TabStop = false;
+            DragonModel.BackColor = Color.Green;
+            DragonModel.Image = (Image)resources.GetObject("DragonModel.Image");
+            DragonModel.Location = new Point(588, 398);
+            DragonModel.Name = "DragonModel";
+            DragonModel.Size = new Size(65, 96);
+            DragonModel.SizeMode = PictureBoxSizeMode.StretchImage;
+            DragonModel.TabIndex = 5;
+            DragonModel.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -167,20 +145,18 @@
             Controls.Add(expLabel);
             Controls.Add(ExitButton);
             Controls.Add(levelLabel);
-            Controls.Add(conquest);
+            Controls.Add(DragonModel);
             Controls.Add(healthLabel);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(invincible);
-            Controls.Add(angstrom);
+            Controls.Add(HeroModel);
+            Controls.Add(WarlockModel);
             Controls.Add(pictureBox1);
             Name = "GameBoard";
             Text = "Form1";
             TransparencyKey = Color.Green;
             KeyDown += move;
-            ((System.ComponentModel.ISupportInitialize)invincible).EndInit();
-            ((System.ComponentModel.ISupportInitialize)angstrom).EndInit();
-            ((System.ComponentModel.ISupportInitialize)conquest).EndInit();
+            ((System.ComponentModel.ISupportInitialize)HeroModel).EndInit();
+            ((System.ComponentModel.ISupportInitialize)WarlockModel).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DragonModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)zombie).EndInit();
             ResumeLayout(false);
@@ -189,12 +165,10 @@
 
         #endregion
 
-        private PictureBox invincible;
-        private PictureBox angstrom;
-        private Label label1;
-        private Label label2;
+        private PictureBox HeroModel;
+        private PictureBox WarlockModel;
         private Label healthLabel;
-        private PictureBox conquest;
+        private PictureBox DragonModel;
         private PictureBox pictureBox1;
         private Label levelLabel;
         private Button ExitButton;
