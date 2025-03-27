@@ -58,7 +58,7 @@
             // 
             WarlockModel.BackColor = Color.Transparent;
             WarlockModel.Image = (Image)resources.GetObject("WarlockModel.Image");
-            WarlockModel.Location = new Point(671, 60);
+            WarlockModel.Location = new Point(9999, 9999);
             WarlockModel.Name = "WarlockModel";
             WarlockModel.Size = new Size(73, 96);
             WarlockModel.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -79,7 +79,7 @@
             // 
             DragonModel.BackColor = Color.Transparent;
             DragonModel.Image = (Image)resources.GetObject("DragonModel.Image");
-            DragonModel.Location = new Point(652, 457);
+            DragonModel.Location = new Point(9999, 9999);
             DragonModel.Name = "DragonModel";
             DragonModel.Size = new Size(83, 96);
             DragonModel.SizeMode = PictureBoxSizeMode.StretchImage;

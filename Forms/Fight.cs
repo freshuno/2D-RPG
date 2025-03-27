@@ -41,15 +41,15 @@ namespace Rpg2d
             FightAPEnemy.Text = "Ability Power: " + enemy.AbilityPower.ToString();
             HeroName.Text = invincible.Name + " (" + invincible.Level + ")";
             EnemyName.Text = enemy.Name + " (" + enemy.Level + ")";
-            if (enemy.Name == "Akrash")
+            if (enemy.Type == "Warlock")
             {
                 fightImgWarlock.Visible = true;
             }
-            if (enemy.Name == "Belmentor")
+            if (enemy.Type == "Dragon")
             {
                 fightImgDragon.Visible = true;
             }
-            if (enemy.Name == "Zombie")
+            if (enemy.Type == "Zombie")
             {
                 fightImgZombie.Visible = true;
             }

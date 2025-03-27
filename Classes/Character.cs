@@ -10,6 +10,7 @@ namespace Rpg2d.Classes
     public abstract class Character
     {
         public string Name { get; set; }
+        public string Type { get; set; }
         public double Health { get; set; }
         public double MaxHealth { get; set; }
         public int AttackDamage { get; set; }
@@ -50,7 +51,6 @@ namespace Rpg2d.Classes
             MaxHealth = Health;
             AttackDamage = level + 3;
             Armor = level + 4;
-
         }
         public override int UseAbility1()
         {
@@ -71,7 +71,7 @@ namespace Rpg2d.Classes
         public Dragon(string name, int level) : base(name, level)
         {
             AttackDamage = Level + 2;
-
+            Type = "Dragon";
         }
         public override int UseAbility1()
         {
@@ -94,6 +94,7 @@ namespace Rpg2d.Classes
 
             AttackDamage = 0;
             AbilityPower = Level + 3;
+            Type = "Warlock";
 
         }
         public override int UseAbility1()
@@ -114,6 +115,7 @@ namespace Rpg2d.Classes
         public Zombie(string name, int level) : base(name, level)
         {
             AttackDamage = Level + 1;
+            Type = "Zombie";
 
         }
         public override int UseAbility1()
