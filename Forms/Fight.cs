@@ -131,7 +131,7 @@ namespace Rpg2d
                 this.Close();
             }
             ButtonSkill1.Enabled = true;
-            ButtonSkill2.Enabled = true;
+            ButtonSkill2.Enabled = true;      
         }
         private void RunAwayButton_Click(object sender, EventArgs e)
         {

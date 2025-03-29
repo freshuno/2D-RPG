@@ -17,8 +17,8 @@ namespace Rpg2d
         Dragon dragonCharacter;
         Zombie zombieCharacter;
         Random rnd = new Random();
-        private Image heroMoveImage = Image.FromFile(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Img\knightMove.png");
-        private Image heroStandImage = Image.FromFile(@"C:\Users\kizza\Desktop\rozne\c#project\2D-RPG\Resources\Img\heroStand.png");
+        private Image heroMoveImage = Image.FromFile(@"E:\C#projects\InvincibleGame\Resources\Img\knightMove.png");
+        private Image heroStandImage = Image.FromFile(@"E:\C#projects\InvincibleGame\Resources\Img\heroStand.png");
         public GameBoard()
         {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace Rpg2d
             using (MemoryStream ms = new MemoryStream(soundBytes))
             {
                 SoundPlayer simpleSound = new SoundPlayer(ms);
-               // simpleSound.Play();
+                simpleSound.Play();
             }
         }
         public void startGame(int Level, Hero LoadedHero)
@@ -45,6 +45,7 @@ namespace Rpg2d
             healthLabel.Text = "Health: " + heroCharacter.Health.ToString() + "/" + heroCharacter.MaxHealth.ToString();
             levelLabel.Text = "Level: " + heroCharacter.Level.ToString();
             expLabel.Text = "Experience: " + heroCharacter.Experience.ToString() + "/" + heroCharacter.Level * 10;
+            GameBoard.playSound(Rpg2D.Properties.Resources.forestLevelMusic);
             loadLevel(Level);
         }
         private async void loadLevel(int Level)
@@ -63,7 +64,6 @@ namespace Rpg2d
                         await Task.Delay(120);
                         enemyRandomMove();
                     }
-                    GameBoard.playSound(Rpg2D.Properties.Resources.forestLevelMusic);
                     break;
                 case 2:
                     warlockCharacter = new Warlock("Nabundo", 25);
@@ -72,7 +72,6 @@ namespace Rpg2d
                     WarlockModel.Location = new System.Drawing.Point(654, 333);
                     mapEnemyCount = 2;
                     newZombieSpawn();
-                    GameBoard.playSound(Rpg2D.Properties.Resources.forestLevelMusic);
                     break;
             }
         }
