@@ -20,7 +20,7 @@ Demonstration of game development patterns in Windows Forms, featuring:
 ## ⚠️ Assets Attribution
 Graphics: AI-generated using ChatGPT (DALL-E)
 
-Music/SFX: AI-generated using SUMO 
+Music/SFX: AI-generated using SUNO 
 
 ## 🚀 How to Run
 
