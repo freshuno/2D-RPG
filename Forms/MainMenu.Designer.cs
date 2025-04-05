@@ -31,11 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             ExitButton = new Button();
             StartNewGameButton = new Button();
+            ContinueButton = new Button();
+            gameLogo = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)gameLogo).BeginInit();
             SuspendLayout();
             // 
             // ExitButton
             // 
-            ExitButton.Location = new Point(209, 280);
+            ExitButton.Location = new Point(123, 234);
             ExitButton.Name = "ExitButton";
             ExitButton.Size = new Size(140, 23);
             ExitButton.TabIndex = 2;
@@ -45,7 +48,7 @@
             // 
             // StartNewGameButton
             // 
-            StartNewGameButton.Location = new Point(209, 229);
+            StartNewGameButton.Location = new Point(123, 176);
             StartNewGameButton.Name = "StartNewGameButton";
             StartNewGameButton.Size = new Size(140, 23);
             StartNewGameButton.TabIndex = 3;
@@ -53,13 +56,36 @@
             StartNewGameButton.UseVisualStyleBackColor = true;
             StartNewGameButton.Click += StartNewGameButton_Click;
             // 
+            // ContinueButton
+            // 
+            ContinueButton.Location = new Point(123, 205);
+            ContinueButton.Name = "ContinueButton";
+            ContinueButton.Size = new Size(140, 23);
+            ContinueButton.TabIndex = 4;
+            ContinueButton.Text = "Continue";
+            ContinueButton.UseVisualStyleBackColor = true;
+            ContinueButton.Click += ContinueButton_Click;
+            // 
+            // gameLogo
+            // 
+            gameLogo.BackColor = Color.Transparent;
+            gameLogo.Image = (Image)resources.GetObject("gameLogo.Image");
+            gameLogo.Location = new Point(108, 12);
+            gameLogo.Name = "gameLogo";
+            gameLogo.Size = new Size(174, 158);
+            gameLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            gameLogo.TabIndex = 5;
+            gameLogo.TabStop = false;
+            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(552, 516);
+            ClientSize = new Size(897, 520);
+            Controls.Add(gameLogo);
+            Controls.Add(ContinueButton);
             Controls.Add(StartNewGameButton);
             Controls.Add(ExitButton);
             DoubleBuffered = true;
@@ -68,11 +94,15 @@
             Name = "MainMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TrueHero";
+            Load += MainMenu_Load;
+            ((System.ComponentModel.ISupportInitialize)gameLogo).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private Button ExitButton;
         private Button StartNewGameButton;
+        private Button ContinueButton;
+        private PictureBox gameLogo;
     }
 }

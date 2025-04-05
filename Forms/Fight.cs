@@ -54,7 +54,7 @@ namespace Rpg2d
                 fightImgZombie.Visible = true;
             }
         }
-        private void victory()
+        private void Victory()
         {
             MessageBox.Show("You won!");
             this.heroCharacter.Experience += 10*this.enemyCharacter.Level;
@@ -73,11 +73,11 @@ namespace Rpg2d
            ButtonSkill2.Enabled = false;
             if (this.enemyCharacter.Health <= 0)
             {
-                victory();
+                Victory();
                 return;
             }
             await Task.Delay(500);
-            enemyAttack();
+            EnemyAttack();
         }
         private async void ButtonSkill2_Click(object sender, EventArgs e)
         {
@@ -88,13 +88,13 @@ namespace Rpg2d
             ButtonSkill2.Enabled = false;
             if (this.enemyCharacter.Health <= 0)
             {
-                victory();
+                Victory();
                 return;
             }
             await Task.Delay(500);
-            enemyAttack();
+            EnemyAttack();
         }
-        private void enemyAttack()
+        private void EnemyAttack()
         {
             Random rnd = new Random();
             int skill = rnd.Next(1, 7);

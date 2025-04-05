@@ -1,5 +1,7 @@
 using System.Media;
+using System.Text.Json.Schema;
 using Rpg2d.Classes;
+using System.Text.Json;
 
 
 
@@ -12,6 +14,7 @@ namespace Rpg2d
         int mapEnemyCount;
         bool isGameRunning = true;
         string rotation = "right";
+        int currentLevel;
         Hero heroCharacter;
         Warlock warlockCharacter;
         Dragon dragonCharacter;
@@ -19,15 +22,18 @@ namespace Rpg2d
         Random rnd = new Random();
         private Image heroMoveImage = Image.FromFile(@"E:\C#projects\InvincibleGame\Resources\Img\knightMove.png");
         private Image heroStandImage = Image.FromFile(@"E:\C#projects\InvincibleGame\Resources\Img\heroStand.png");
+        string saveFileName = "SaveFile.json";
         public GameBoard()
         {
             InitializeComponent();
-            startGame(1, new Hero("Unnamed Hero", 1));
+            currentLevel = 1;
+            StartGame(1, new Hero("Unnamed Hero", 1));
         }
         public GameBoard(Hero loadedHero, int Level)
         {
             InitializeComponent();
-            startGame(Level, loadedHero);
+            currentLevel = Level;
+            StartGame(Level, loadedHero);
         }
         public static void playSound(byte[] soundBytes)
         {
@@ -39,39 +45,39 @@ namespace Rpg2d
                 simpleSound.Play();
             }
         }
-        public void startGame(int Level, Hero LoadedHero)
+        public void StartGame(int Level, Hero LoadedHero)
         {
             heroCharacter = LoadedHero;
             healthLabel.Text = "Health: " + heroCharacter.Health.ToString() + "/" + heroCharacter.MaxHealth.ToString();
             levelLabel.Text = "Level: " + heroCharacter.Level.ToString();
             expLabel.Text = "Experience: " + heroCharacter.Experience.ToString() + "/" + heroCharacter.Level * 10;
-            GameBoard.playSound(Rpg2D.Properties.Resources.forestLevelMusic);
-            loadLevel(Level);
+            LoadLevel(Level);
         }
-        private async void loadLevel(int Level)
+        private async void LoadLevel(int Level)
         {
             switch (Level)
             {
                 case 1:
+                    GameBoard.playSound(Rpg2D.Properties.Resources.forestLevelMusic);
+                    this.BackgroundImage = Image.FromFile("E:\\C#projects\\InvincibleGame\\Resources\\Img\\backgroundForest.png");
                     warlockCharacter = new Warlock("Akrash", 5);
                     dragonCharacter = new Dragon("Belmentor", 15);
                     DragonModel.Location = new System.Drawing.Point(652, 457);
                     WarlockModel.Location = new System.Drawing.Point(671, 60);
                     mapEnemyCount = 2;
-                    newZombieSpawn();
+                    NewZombieSpawn();
                     while (isGameRunning)
                     {
                         await Task.Delay(120);
-                        enemyRandomMove();
+                        EnemyRandomMove();
                     }
                     break;
                 case 2:
-                    warlockCharacter = new Warlock("Nabundo", 25);
-                    dragonCharacter = new Dragon("Aktarion", 35);
-                    DragonModel.Location = new System.Drawing.Point(105, 212);
-                    WarlockModel.Location = new System.Drawing.Point(654, 333);
-                    mapEnemyCount = 2;
-                    newZombieSpawn();
+                    GameBoard.playSound(Rpg2D.Properties.Resources.cityMusic);
+                    this.BackgroundImage = Image.FromFile("E:\\C#projects\\InvincibleGame\\Resources\\Img\\backgroundCity.png");
+                    DragonModel.Location = new System.Drawing.Point(9999, 9999);
+                    WarlockModel.Location = new System.Drawing.Point(9999, 9999);
+                    zombie.Location = new System.Drawing.Point(9999, 9999);
                     break;
             }
         }
@@ -84,7 +90,7 @@ namespace Rpg2d
                 Application.Restart();
             }
         }
-        private void interaction()
+        private void Interaction()
         {
             if (Math.Abs(HeroModel.Location.X - WarlockModel.Location.X) < 50 && (Math.Abs(HeroModel.Location.Y - WarlockModel.Location.Y) < 100))
             {
@@ -118,7 +124,7 @@ namespace Rpg2d
                 MessageBox.Show("Let's fight!");
                 Fight fight = new Fight(heroCharacter, zombieCharacter);
                 fight.ShowDialog();
-                newZombieSpawn();
+                NewZombieSpawn();
                 heroCharacter = fight.heroCharacter;
                 levelLabel.Text = "Level: " + heroCharacter.Level.ToString();
                 expLabel.Text = "Experience: " + heroCharacter.Experience.ToString() + "/" + heroCharacter.Level * 10;
@@ -159,7 +165,7 @@ namespace Rpg2d
                 CheckIfLevelCleared();
             }
         }
-        private void move(object sender, KeyEventArgs e)
+        private void Move(object sender, KeyEventArgs e)
         {
             var location = HeroModel.Location;
             HeroModel.Image = heroMoveImage;
@@ -188,7 +194,7 @@ namespace Rpg2d
                     }
                     location.X = location.X - 5;
                     HeroModel.Location = location;
-                    if(rotation == "right")
+                    if (rotation == "right")
                     {
                         HeroModel.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
                         rotation = "left";
@@ -208,9 +214,9 @@ namespace Rpg2d
                     }
                     break;
             }
-            interaction();
+            Interaction();
         }
-        private void modelBackToIdle(object sender, KeyEventArgs e)
+        private void ModelBackToIdle(object sender, KeyEventArgs e)
         {
             HeroModel.Image = heroStandImage;
         }
@@ -219,7 +225,7 @@ namespace Rpg2d
             isGameRunning = false;
             Application.Restart();
         }
-        private void newZombieSpawn()
+        private void NewZombieSpawn()
         {
             int currentLevel = heroCharacter.Level;
             int rndLevel;
@@ -239,7 +245,7 @@ namespace Rpg2d
             zombieCharacter = new Zombie("Zombie", rndLevel);
             zombie.Location = new System.Drawing.Point(locationX, locationY);
         }
-        private void enemyRandomMove()
+        private void EnemyRandomMove()
         {
             int rndMove = rnd.Next(1, 5);
             var location = zombie.Location;
@@ -278,6 +284,13 @@ namespace Rpg2d
                     zombie.Location = location;
                     break;
             }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            string saveString = JsonSerializer.Serialize(heroCharacter);
+            MessageBox.Show(saveString);
+            File.WriteAllText(saveFileName, saveString);
         }
     }
 }

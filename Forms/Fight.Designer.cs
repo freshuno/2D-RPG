@@ -267,6 +267,7 @@ namespace Rpg2d
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Fight";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "TrueHero";
             ((System.ComponentModel.ISupportInitialize)fightImgHero).EndInit();
             ((System.ComponentModel.ISupportInitialize)fightImgWarlock).EndInit();

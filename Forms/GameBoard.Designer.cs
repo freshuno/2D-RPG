@@ -37,6 +37,7 @@
             ExitButton = new Button();
             expLabel = new Label();
             zombie = new PictureBox();
+            SaveButton = new Button();
             ((System.ComponentModel.ISupportInitialize)HeroModel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WarlockModel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DragonModel).BeginInit();
@@ -125,13 +126,23 @@
             zombie.TabIndex = 10;
             zombie.TabStop = false;
             // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(836, 582);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(150, 23);
+            SaveButton.TabIndex = 11;
+            SaveButton.Text = "Save Game";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
+            // 
             // GameBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(998, 617);
+            Controls.Add(SaveButton);
             Controls.Add(expLabel);
             Controls.Add(levelLabel);
             Controls.Add(healthLabel);
@@ -148,8 +159,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TrueHero";
             TransparencyKey = Color.Green;
-            KeyDown += move;
-            KeyUp += modelBackToIdle;
+            KeyDown += Move;
+            KeyUp += ModelBackToIdle;
             ((System.ComponentModel.ISupportInitialize)HeroModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)WarlockModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)DragonModel).EndInit();
@@ -168,5 +179,6 @@
         private Button ExitButton;
         private Label expLabel;
         private PictureBox zombie;
+        private Button SaveButton;
     }
 }
