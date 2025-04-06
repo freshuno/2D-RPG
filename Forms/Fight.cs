@@ -28,18 +28,18 @@ namespace Rpg2d
             this.enemyCharacter = Enemy;
             FightingSequence(heroCharacter, enemyCharacter);
         }
-        public void FightingSequence(Character invincible, Character enemy)
+        public void FightingSequence(Character hero, Character enemy)
         {
             GameBoard.playSound(Rpg2D.Properties.Resources.fightMusic);
-            FightHealthHero.Text = "Health: " + invincible.Health.ToString();
-            FightADHero.Text = "Attack Damage: " + invincible.AttackDamage.ToString();
-            FightArmorHero.Text = "Armor: " + invincible.Armor.ToString();
-            FightAPHero.Text = "Ability Power: " + invincible.AbilityPower.ToString();
-            FightHealthEnemy.Text = "Health: " + enemy.Health.ToString();
+            FightHealthHero.Text = "Health: " + hero.Health.ToString("F2");
+            FightADHero.Text = "Attack Damage: " + hero.AttackDamage.ToString();
+            FightArmorHero.Text = "Armor: " + hero.Armor.ToString();
+            FightAPHero.Text = "Ability Power: " + hero.AbilityPower.ToString();
+            FightHealthEnemy.Text = "Health: " + enemy.Health.ToString("F2");
             FightADEnemy.Text = "Attack Damage: " + enemy.AttackDamage.ToString();
             FightArmorEnemy.Text = "Armor: " + enemy.Armor.ToString();
             FightAPEnemy.Text = "Ability Power: " + enemy.AbilityPower.ToString();
-            HeroName.Text = invincible.Name + " (" + invincible.Level + ")";
+            HeroName.Text = hero.Name + " (" + hero.Level + ")";
             EnemyName.Text = enemy.Name + " (" + enemy.Level + ")";
             if (enemy.Type == "Warlock")
             {
@@ -68,7 +68,7 @@ namespace Rpg2d
         private async void ButtonSkill1_Click(object sender, EventArgs e) {
            damage = this.heroCharacter.UseAbility1() - (this.enemyCharacter.Armor * 0.05);
            this.enemyCharacter.Health -= damage;
-           FightHealthEnemy.Text = "Health: " + this.enemyCharacter.Health.ToString() + " (-" + damage + ")";
+           FightHealthEnemy.Text = "Health: " + this.enemyCharacter.Health.ToString("F2") + " (-" + damage + ")";
            ButtonSkill1.Enabled = false;
            ButtonSkill2.Enabled = false;
             if (this.enemyCharacter.Health <= 0)
@@ -83,7 +83,7 @@ namespace Rpg2d
         {
             damage = this.heroCharacter.UseAbility2() - (this.enemyCharacter.Armor * 0.05);
             this.enemyCharacter.Health -= damage;
-            FightHealthEnemy.Text = $"Health: " + this.enemyCharacter.Health.ToString() + " (-" + damage + ")";
+            FightHealthEnemy.Text = $"Health: " + this.enemyCharacter.Health.ToString("F2") + " (-" + damage + ")";
             ButtonSkill1.Enabled = false;
             ButtonSkill2.Enabled = false;
             if (this.enemyCharacter.Health <= 0)
@@ -107,7 +107,7 @@ namespace Rpg2d
                     EnemyAbilityUseText.Visible = true;
                     EnemyAbilityUseText.Text = $"{enemyCharacter.Name} used ability 1!";
                     this.heroCharacter.Health -= damage;
-                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString() + " (-" + damage + ")";
+                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString("F2") + " (-" + damage + ")";
                     break;
                 case 4:
                 case 5:
@@ -115,14 +115,14 @@ namespace Rpg2d
                     EnemyAbilityUseText.Visible = true;
                     EnemyAbilityUseText.Text = $"{enemyCharacter.Name} used ability 2!";
                     this.heroCharacter.Health -= damage;
-                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString() + " (-" + damage + ")";
+                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString("F2") + " (-" + damage + ")";
                     break;
                 case 6:
                     damage = enemyCharacter.UseAbility3() - (this.heroCharacter.Armor * 0.05);
                     EnemyAbilityUseText.Visible = true;
                     EnemyAbilityUseText.Text = $"{enemyCharacter.Name} used ability 3!";
                     this.heroCharacter.Health -= damage;
-                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString() + " (-" + damage + ")";
+                    FightHealthHero.Text = "Health: " + this.heroCharacter.Health.ToString("F2") + " (-" + damage + ")";
                     break;
             }
             if (this.heroCharacter.Health <= 0)

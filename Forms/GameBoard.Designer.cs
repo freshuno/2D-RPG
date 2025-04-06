@@ -36,11 +36,13 @@
             levelLabel = new Label();
             ExitButton = new Button();
             expLabel = new Label();
-            zombie = new PictureBox();
             SaveButton = new Button();
+            PortalModel = new PictureBox();
+            zombie = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)HeroModel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WarlockModel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DragonModel).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PortalModel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)zombie).BeginInit();
             SuspendLayout();
             // 
@@ -59,7 +61,7 @@
             // 
             WarlockModel.BackColor = Color.Transparent;
             WarlockModel.Image = (Image)resources.GetObject("WarlockModel.Image");
-            WarlockModel.Location = new Point(9999, 9999);
+            WarlockModel.Location = new Point(200, 302);
             WarlockModel.Name = "WarlockModel";
             WarlockModel.Size = new Size(73, 96);
             WarlockModel.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -80,7 +82,7 @@
             // 
             DragonModel.BackColor = Color.Transparent;
             DragonModel.Image = (Image)resources.GetObject("DragonModel.Image");
-            DragonModel.Location = new Point(9999, 9999);
+            DragonModel.Location = new Point(200, 200);
             DragonModel.Name = "DragonModel";
             DragonModel.Size = new Size(83, 96);
             DragonModel.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -115,6 +117,27 @@
             expLabel.TabIndex = 9;
             expLabel.Text = "label3";
             // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(836, 582);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(150, 23);
+            SaveButton.TabIndex = 11;
+            SaveButton.Text = "Save Game";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
+            // 
+            // PortalModel
+            // 
+            PortalModel.BackColor = Color.Transparent;
+            PortalModel.Image = Rpg2D.Properties.Resources.portal;
+            PortalModel.Location = new Point(888, 346);
+            PortalModel.Name = "PortalModel";
+            PortalModel.Size = new Size(108, 103);
+            PortalModel.SizeMode = PictureBoxSizeMode.StretchImage;
+            PortalModel.TabIndex = 12;
+            PortalModel.TabStop = false;
+            // 
             // zombie
             // 
             zombie.BackColor = Color.Transparent;
@@ -126,30 +149,21 @@
             zombie.TabIndex = 10;
             zombie.TabStop = false;
             // 
-            // SaveButton
-            // 
-            SaveButton.Location = new Point(836, 582);
-            SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(150, 23);
-            SaveButton.TabIndex = 11;
-            SaveButton.Text = "Save Game";
-            SaveButton.UseVisualStyleBackColor = true;
-            SaveButton.Click += SaveButton_Click;
-            // 
             // GameBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(998, 617);
-            Controls.Add(SaveButton);
             Controls.Add(expLabel);
             Controls.Add(levelLabel);
             Controls.Add(healthLabel);
+            Controls.Add(HeroModel);
+            Controls.Add(PortalModel);
+            Controls.Add(SaveButton);
             Controls.Add(WarlockModel);
             Controls.Add(DragonModel);
             Controls.Add(zombie);
-            Controls.Add(HeroModel);
             Controls.Add(ExitButton);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -164,6 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)HeroModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)WarlockModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)DragonModel).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PortalModel).EndInit();
             ((System.ComponentModel.ISupportInitialize)zombie).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -178,7 +193,8 @@
         private Label levelLabel;
         private Button ExitButton;
         private Label expLabel;
-        private PictureBox zombie;
         private Button SaveButton;
+        private PictureBox PortalModel;
+        private PictureBox zombie;
     }
 }

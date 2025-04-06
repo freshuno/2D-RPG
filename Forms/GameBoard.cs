@@ -59,22 +59,26 @@ namespace Rpg2d
             {
                 case 1:
                     GameBoard.playSound(Rpg2D.Properties.Resources.forestLevelMusic);
+                    currentLevel = 1;
                     this.BackgroundImage = Image.FromFile("E:\\C#projects\\InvincibleGame\\Resources\\Img\\backgroundForest.png");
                     warlockCharacter = new Warlock("Akrash", 5);
                     dragonCharacter = new Dragon("Belmentor", 15);
                     DragonModel.Location = new System.Drawing.Point(652, 457);
                     WarlockModel.Location = new System.Drawing.Point(671, 60);
+                    PortalModel.Location = new System.Drawing.Point(888, 346);
                     mapEnemyCount = 2;
                     NewZombieSpawn();
-                    while (isGameRunning)
+                    while (isGameRunning || currentLevel == 1)
                     {
                         await Task.Delay(120);
                         EnemyRandomMove();
                     }
                     break;
                 case 2:
+                    currentLevel = 2;
                     GameBoard.playSound(Rpg2D.Properties.Resources.cityMusic);
                     this.BackgroundImage = Image.FromFile("E:\\C#projects\\InvincibleGame\\Resources\\Img\\backgroundCity.png");
+                    PortalModel.Location = new System.Drawing.Point(400, 346);
                     DragonModel.Location = new System.Drawing.Point(9999, 9999);
                     WarlockModel.Location = new System.Drawing.Point(9999, 9999);
                     zombie.Location = new System.Drawing.Point(9999, 9999);
@@ -163,6 +167,17 @@ namespace Rpg2d
                 healthLabel.Text = "Health: " + heroCharacter.Health.ToString();
                 GameBoard.playSound(Rpg2D.Properties.Resources.forestLevelMusic);
                 CheckIfLevelCleared();
+            }
+            if (Math.Abs(HeroModel.Location.X - PortalModel.Location.X) < 50 && (Math.Abs(HeroModel.Location.Y - PortalModel.Location.Y) < 100))
+            {
+                if (currentLevel == 1)
+                {
+                    LoadLevel(2);
+                }
+                else if (currentLevel == 2)
+                {
+                    LoadLevel(1);
+                }
             }
         }
         private void Move(object sender, KeyEventArgs e)
@@ -289,7 +304,7 @@ namespace Rpg2d
         private void SaveButton_Click(object sender, EventArgs e)
         {
             string saveString = JsonSerializer.Serialize(heroCharacter);
-            MessageBox.Show(saveString);
+            MessageBox.Show("Game has been saved");
             File.WriteAllText(saveFileName, saveString);
         }
     }

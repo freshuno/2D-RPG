@@ -58,7 +58,7 @@ namespace Rpg2d.Classes
         }
         public override int UseAbility2()
         {
-            return AttackDamage*Level;
+            return AttackDamage + Level * 2;
         }
         public override int UseAbility3()
         {
@@ -71,19 +71,21 @@ namespace Rpg2d.Classes
         public Dragon(string name, int level) : base(name, level)
         {
             AttackDamage = Level + 2;
+            Health = level * 12;
+            MaxHealth = Health;
             Type = "Dragon";
         }
         public override int UseAbility1()
         {
-            return AttackDamage;
+            return AttackDamage + 5;
         }
         public override int UseAbility2()
         {
-            return AttackDamage + 3;
+            return AttackDamage + 8;
         }
         public override int UseAbility3()
         {
-            return AttackDamage + 6;
+            return AttackDamage + 10;
         }
 
     }
@@ -91,7 +93,8 @@ namespace Rpg2d.Classes
     {
         public Warlock(string name, int level) : base(name, level)
         {
-
+            Health = level * 12;
+            MaxHealth = Health;
             AttackDamage = 0;
             AbilityPower = Level + 3;
             Type = "Warlock";
@@ -99,7 +102,7 @@ namespace Rpg2d.Classes
         }
         public override int UseAbility1()
         {
-            return AbilityPower * 2;
+            return AbilityPower + Level;
         }
         public override int UseAbility2()
         {
@@ -120,15 +123,15 @@ namespace Rpg2d.Classes
         }
         public override int UseAbility1()
         {
-            return AttackDamage;
+            return (AttackDamage + Level)/2;
         }
         public override int UseAbility2()
         {
-            return AttackDamage + 2;
+            return AttackDamage + Level;
         }
         public override int UseAbility3()
         {
-            return AttackDamage + 3;
+            return AttackDamage + 2*Level;
         }
     }
 }
